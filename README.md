@@ -15,6 +15,8 @@ Two hypotheses were tested:
 The process includes dataset merging, cleaning, Z‑score normalization
 using Worldwide averages, correlation analysis, and hypothesis testing.
 
+Code: https://colab.research.google.com/drive/1gaJ-ycMkWCuMxfnKqy5WDlPcy_FaJSgm?usp=sharing
+
 ## Motivation
 
 Social media is one of the most influential tools for communication and information sharing in modern societies. However, the intensity of its use may vary across countries depending on their economic conditions. One day I want to build my own social media platform, that's why I try to understand the needs and habbits of societies with different development levels. The findings will help me to understand how development level influences digital behaviors.
