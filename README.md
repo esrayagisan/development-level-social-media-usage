@@ -1,75 +1,139 @@
-# development-level-social-media-usage
-DSA210 Term Project Repo
+# development-level-social-media-usage  
+DSA210 Term Project Repository
 
-# Social Media Usage & Development Indicators Analysis
+## Social Media Usage & Development Indicators Analysis
+
+---
 
 ## Project Summary
 
-This project analyzes whether countries' social media platform preferences
-correlate with development indicators.\
-Two hypotheses were tested:
+This project investigates the relationship between social media usage patterns
+and country-level development indicators. The analysis aims to understand whether
+platform-specific usage behaviors correlate with economic, institutional, and
+social development measures across countries.
 
--   **H0:** No correlation exists.
--   **H1:** A correlation exists.
+The study follows a structured pipeline including data extraction, cleaning,
+exploratory data analysis (EDA), hypothesis testing, normalization, and machine
+learning modeling.
 
-The process includes dataset merging, cleaning, Z‑score normalization
-using Worldwide averages, correlation analysis, and hypothesis testing.
+**Hypotheses tested:**
+- **H0:** There is no correlation between social media usage and development indicators.
+- **H1:** There exists a statistically significant correlation between social media usage and development indicators.
 
-Code: https://colab.research.google.com/drive/1gaJ-ycMkWCuMxfnKqy5WDlPcy_FaJSgm?usp=sharing
+---
 
 ## Motivation
 
-Social media is one of the most influential tools for communication and information sharing in modern societies. However, the intensity of its use may vary across countries depending on their economic conditions. One day I want to build my own social media platform, that's why I try to understand the needs and habbits of societies with different development levels. The findings will help me to understand how development level influences digital behaviors.
+Social media is one of the most influential tools for communication and
+information sharing in modern societies. However, the intensity and nature ofI of
+its use may vary across countries depending on their economic and developmental
+conditions. Motivated by the long-term goal of building a social media platform,
+this project aims to better understand how societies with different development
+levels engage with social media. The findings help explain how development
+contexts influence digital behaviors and platform preferences.
 
+---
 
 ## Datasets
 
--   `monthly_time_spend_by_country.csv`: This dataset is obtained from Datareportal's Instagram, X, Tiktok, LinkedIn, Pinterest Users, Stats, Data & Trends for 2025. I couldn't find the actual dataset so I used the graphs that show monthly time spend data for top 50 countries. I used GenAI to convert these graphs to a merged data table.
-Graphs: https://drive.google.com/drive/folders/11Oza-q2oY5u7eKO9wnQlAcZHpx14U2ee?usp=sharing
-Extracted dataset: https://drive.google.com/file/d/1XVIsLcXXbefWaH4NlXZDJHGTI9uUGbAo/view?usp=sharing
+- **`monthly_time_spend_by_country.csv`**  
+  Source: Datareportal (2025 platform usage statistics).  
+  Since the raw dataset was not publicly available, platform-specific graphs
+  showing average monthly time spent for the top 50 countries were extracted and
+  converted into tabular format using Generative AI tools.
 
--   `android_phone_use_by_country.csv`: https://gs.statcounter.com/os-market-share/mobile/worldwide/#quarterly-202404-202404-map
-https://drive.google.com/file/d/1Nfg3OeY6cbPBhYDJtB8w0S1-4T789Dl1/view?usp=sharing
+  - Graphs:  
+    https://drive.google.com/drive/folders/11Oza-q2oY5u7eKO9wnQlAcZHpx14U2ee
+  - Extracted dataset:  
+    https://drive.google.com/file/d/1XVIsLcXXbefWaH4NlXZDJHGTI9uUGbAo
 
+- **`android_phone_use_by_country.csv`**  
+  Source: StatCounter Global Stats  
+  https://gs.statcounter.com/os-market-share/mobile/worldwide/#quarterly-202404-202404-map  
+  Extracted dataset:  
+  https://drive.google.com/file/d/1Nfg3OeY6cbPBhYDJtB8w0S1-4T789Dl1
 
--   `development_country.csv`: https://www.kaggle.com/datasets/tarktunataalt/2023-global-country-development-and-prosperity-index
-https://drive.google.com/file/d/16qgpEV9k87cOgHd1SqIVORoXSGyxBYmF/view?usp=sharing
+- **`development_country.csv`**  
+  Source: Kaggle – 2023 Global Country Development and Prosperity Index  
+  https://www.kaggle.com/datasets/tarktunataalt/2023-global-country-development-and-prosperity-index  
+  Extracted dataset:  
+  https://drive.google.com/file/d/16qgpEV9k87cOgHd1SqIVORoXSGyxBYmF
+
+---
 
 ## Data Preparation
 
--   Cleaned `Country_Code`
--   Replaced "-" with NaN
--   Merged datasets on `Country_Code`
--   Restored the `Worldwide` row for Z‑score normalization
+- Standardized `Country_Code` values
+- Replaced missing values ("-") with NaN
+- Merged datasets using `Country_Code`
+- Converted all numerical columns to numeric format
+- Generated platform-specific normalized usage variables using Android
+  penetration rates
 
-## Z‑Score Normalization
+The final cleaned dataset is available within the notebook outputs.
 
-Z‑score was computed relative to the Worldwide usage value:
+---
 
-    z = (country_value – worldwide_value) / std(countries_only)
+## Exploratory Data Analysis (EDA)
+
+EDA was conducted to:
+- Inspect distributions of social media usage variables
+- Analyze correlations between platforms and development indicators
+- Identify potential outliers and missing data patterns
+
+Visualizations include correlation heatmaps and scatter plots for each
+platform–indicator pair.
+
+---
+
+## Normalization
+
+Social media usage values were normalized using Android phone penetration rates
+to control for device accessibility differences across countries.
+
+---
 
 ## Correlation & Hypothesis Testing
 
-Pearson and Spearman correlations were computed between: 
-- Each social
-media platform (Z‑score adjusted)
+Pearson (linear) and Spearman (rank-based) correlation analyses were performed
+between:
+- Each social media platform’s normalized usage
 - Each development indicator
 
-Significant relationships were identified using **p \< 0.05**.
+Statistical significance was evaluated using **p < 0.05**. Results from both
+methods were compared to assess robustness.
 
-## Outputs
+---
 
--   Cleaned merged dataset\
--   Z‑score normalized columns\
--   Correlation heatmap\
--   Hypothesis test results\
--   Significant relationships list
+## Machine Learning
 
-## Conclusion
+A regression-based machine learning model was applied to evaluate the predictive
+power of social media usage on development indicators. The model achieved a low
+R² score (~0.097), indicating that social media usage alone has limited
+predictive capability and should be interpreted as a complementary signal rather
+than a primary determinant.
 
-This project provides a standardized comparison of social media usage
-patterns across development indicators, accounting for missing data and
-dataset bias using normalization techniques.
+---
+
+## Results & Interpretation
+
+- Platform-specific patterns were observed across development dimensions
+- LinkedIn and Pinterest showed mostly positive associations with institutional
+  and quality-of-life indicators
+- TikTok and YouTube exhibited more negative associations with governance and
+  economic indicators
+- ML results supported the statistical findings by highlighting weak standalone
+  predictive power
+
+---
+
+## Reproducibility
+
+To reproduce the analysis:
+
+```bash
+pip install -r requirements.txt
+
 
 
 
