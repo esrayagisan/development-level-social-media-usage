@@ -127,12 +127,14 @@ than a primary determinant.
 
 ---
 
-## Reproducibility
+## AI Tool Usage
 
-To reproduce the analysis:
-
-```bash
-pip install -r requirements.txt
+Generative AI tools were used in this project for specific and limited purposes.
+These include converting publicly available graphical data into tabular format,
+assisting with code debugging, and improving code structure and documentation.
+All analytical decisions, hypothesis formulation, statistical testing,
+interpretation of results, and conclusions were independently conducted by the
+author. AI tools were not used to generate results or automate analysis.
 
 
 
